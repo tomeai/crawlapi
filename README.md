@@ -18,6 +18,27 @@
 5. 解析中心   插件化注册
 ```
 
+## 规划
+
+```
+crawlapi 对接 relyapi crawlet scrapy  都是主动查询
+    1. crawl-agent   redis lbpop   
+        1. crawl-agent 挂载了爬虫 （挂载的真实设备）
+    2. crawlet 也是查询 redis   注册更新爬虫 不影响其他爬虫
+        1. 挂载 golang爬虫
+    3. scrapy也是查询 redis   注册更新爬虫 不影响其他爬虫
+        1. 挂载 python爬虫
+
+主动拉取任务  从数据库查询
+```
+
+## 设计
+
+```
+# blpop  客户端统一使用blpop接收
+https://github.com/rmax/scrapy-redis/blob/c3064c2fa74e623bf14448d82cc07ca2da8e183d/src/scrapy_redis/scheduler.py
+```
+
 ## 参考
 
 ```
